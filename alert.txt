@@ -1,0 +1,15 @@
+9836272 | Canh bao xam nhap vung | Vung 2 | 600 | 110 | 2021/12/01 00:50:23
+9836272 | Canh bao di ra khoi vung | Vung 1 | 600 | 110 | 2021/12/01 00:50:23
+9836272 | Canh bao xam nhap vung | Vung 1 | 790 | 100 | 2021/12/01 01:00:23
+9836272 | Canh bao di ra khoi vung | Vung 2 | 790 | 100 | 2021/12/01 01:00:23
+9836272 | Canh bao di ra khoi vung | Vung 1 | 900 | 100 | 2021/12/01 01:12:23
+9836272 | Canh bao xam nhap vung | Vung 2 | 800 | 110 | 2021/12/01 01:22:19
+9836272 | Canh bao di ra khoi vung | Vung 2 | 700 | 200 | 2021/12/01 01:48:21
+9836272 | Canh bao xam nhap vung | Vung 2 | 500 | 150 | 2021/12/01 01:57:23
+9836272 | Canh bao di ra khoi vung | Vung 2 | 800 | 170 | 2021/12/01 02:28:20
+9836272 | Canh bao xam nhap vung | Vung 1 | 890 | 100 | 2021/12/01 02:49:55
+9836273 | Canh bao xam nhap vung | Vung 2 | 1000 | 150 | 2021/12/01 00:30:12
+9836273 | Canh bao xam nhap vung | Vung 1 | 800 | 100 | 2021/12/01 01:09:56
+9836273 | Canh bao di ra khoi vung | Vung 2 | 800 | 100 | 2021/12/01 01:09:56
+9836273 | Canh bao di ra khoi vung | Vung 1 | 900 | 80 | 2021/12/01 01:26:55
+9836273 | Canh bao xam nhap vung | Vung 2 | 1000 | 120 | 2021/12/01 02:27:34
