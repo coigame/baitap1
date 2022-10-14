@@ -25,7 +25,6 @@ public class test {
         System.out.println("HH:mm:ss.SSS MM/dd/yyyy: " + dateFormat.format(date));
         dateFormat = new SimpleDateFormat("HH:mm:ss");
         System.out.println("HH:mm:ss: " + dateFormat.format(date));
-
     }
 
 }
