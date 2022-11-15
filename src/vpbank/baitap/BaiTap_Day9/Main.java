@@ -1,6 +1,7 @@
 package vpbank.baitap.BaiTap_Day9;
 
 import vpbank.baitap.BaiTap_Day9.Excecutor.Bai9;
+import vpbank.baitap.BaiTap_Day9.Model.Input;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,6 +14,7 @@ public class Main {
             obj.addOutput();
             obj.mapping();
             obj.writeFileOutput("C:\\Developer\\BaiTap_Javacore_1\\BaiTap_Day9\\output");
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

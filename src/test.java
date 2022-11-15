@@ -1,30 +1,46 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
+class Customer {
+    int amount = 10000;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+    synchronized void withdraw(int amount) {
+        System.out.println("Rút tiền...");
 
-/**
- *
- * @author TVD
- */
-public class test {
-
-    public static void main(String[] args) {
-        Date date = new Date();
-        DateFormat dateFormat;
-        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("dd/MM/yyyy: " + dateFormat.format(date));
-        dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        System.out.println("MM/dd/yyyy: " + dateFormat.format(date));
-        dateFormat = new SimpleDateFormat("hh:mm:ss MM/dd/yyyy");
-        System.out.println("hh:mm:ss MM/dd/yyyy: " + dateFormat.format(date));
-        dateFormat = new SimpleDateFormat("HH:mm:ss MM/dd/yyyy");
-        System.out.println("HH:mm:ss MM/dd/yyyy: " + dateFormat.format(date));
-        dateFormat = new SimpleDateFormat("HH:mm:ss.SSS MM/dd/yyyy");
-        System.out.println("HH:mm:ss.SSS MM/dd/yyyy: " + dateFormat.format(date));
-        dateFormat = new SimpleDateFormat("HH:mm:ss");
-        System.out.println("HH:mm:ss: " + dateFormat.format(date));
+        if (this.amount < amount) {
+            System.out.println("Tài khoản không đủ; đợi gửi tiền...");
+            try {
+                wait();
+            } catch (Exception e) {
+            }
+        }
+        this.amount -= amount;
+        System.out.println("Hoàn thành rút tiền!");
     }
 
+    synchronized void deposit(int amount) {
+        System.out.println("Gửi tiền...");
+        this.amount += amount;
+        System.out.println("Hoàn thành gửi tiền!");
+        notify();
+    }
+}
+
+public class test {
+    public static void main(String args[]) {
+        final Customer c = new Customer();
+        new Thread() {
+            public void run() {
+                c.withdraw(15000);
+            }
+        }.start();
+        new Thread() {
+            public void run() {
+                c.deposit(10000);
+            }
+        }.start();
+    }
 }

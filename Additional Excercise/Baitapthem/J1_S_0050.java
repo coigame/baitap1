@@ -22,7 +22,7 @@ class Validate{
     }
 }
 class CalculateEquation extends Validate{
-    public static void calculateSuperlativeEquation(){
+    private static void calculateSuperlativeEquation(){
         Scanner scan = new Scanner(System.in);
 
         System.out.println(" ----- Calculate Equation ----- ");
