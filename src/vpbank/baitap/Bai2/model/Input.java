@@ -1,6 +1,6 @@
 package vpbank.baitap.Bai2.model;
 import java.io.File;
-import java.util.ArrayList;
+
 
 public class Input extends Match{
     private int dateFolder;

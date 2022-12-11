@@ -1,45 +1,60 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executors;
-import java.util.concurrent.*;
 
-class Customer {
-    int amount = 10000;
 
-    synchronized void withdraw(int amount) {
-        System.out.println("Rút tiền...");
+class BankAccount {
 
-        if (this.amount < amount) {
-            System.out.println("Tài khoản không đủ; đợi gửi tiền...");
-            try {
-                wait();
-            } catch (Exception e) {
-            }
+    long amount = 20000000; // Số tiền có trong tài khoản
+
+    public synchronized boolean checkAccountBalance(long withDrawAmount) {
+        // Giả lập thời gian đọc cơ sở dữ liệu và kiểm tra tiền
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        this.amount -= amount;
-        System.out.println("Hoàn thành rút tiền!");
+
+        if (withDrawAmount <= amount) {
+            // Cho phép rút tiền
+            return true;
+        }
+
+        // Không cho phép rút tiền
+        return false;
     }
 
-    synchronized void deposit(int amount) {
-        System.out.println("Gửi tiền...");
-        this.amount += amount;
-        System.out.println("Hoàn thành gửi tiền!");
-        notify();
+    public synchronized void withdraw(String threadName, long withdrawAmount) {
+        // In thông tin người rút
+        System.out.println(threadName + " check: " + withdrawAmount);
+
+        if (checkAccountBalance(withdrawAmount)) {
+            // Giả lập thời gian rút tiền và
+            // cập nhật số tiền còn lại vào cơ sở dữ liệu
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            amount -= withdrawAmount;
+            System.out.println(threadName + " withdraw successful: " + withdrawAmount);
+        } else {
+            System.out.println(threadName + " withdraw error!");
+        }
+
+        // In ra số dư tài khoản
+        System.out.println(threadName + " see balance: " + amount);
     }
 }
-
 public class test {
     public static void main(String args[]) {
-        final Customer c = new Customer();
+        final BankAccount c = new BankAccount();
         new Thread() {
             public void run() {
-                c.withdraw(15000);
+                c.withdraw("1" ,15000000);
             }
         }.start();
         new Thread() {
             public void run() {
-                c.deposit(10000);
+                c.withdraw("2", 10000000);
             }
         }.start();
     }
